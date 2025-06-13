@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 const db = new Database("db.sqlite");
 const SECRET = process.env.JWT_SECRET || "dev_secret";
@@ -136,4 +137,5 @@ app.delete("/comments/:id", authMiddleware, (req, res) => {
   res.json({ success: true });
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
